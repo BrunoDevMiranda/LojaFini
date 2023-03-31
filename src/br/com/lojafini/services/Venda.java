@@ -10,17 +10,8 @@ public class Venda {
     private String nomeCliente;
     private String nomeVendedor;
     private String nomeProduto;
-
-
     private int quantidades;
     private double total;
-
-
-
-
-    public Venda() {
-
-    }
 
     public Venda(Integer ID, int notaFiscal, String data, double valor, String nomeCliente, String nomeVendedor, String nomeProduto, int quantidades, double total) {
         this.ID = ID;
@@ -32,17 +23,6 @@ public class Venda {
         this.nomeProduto = nomeProduto;
         this.quantidades = quantidades;
         this.total = total;
-    }
-
-    public void print(){
-        System.out.println("Nota Fiscal: "+ notaFiscal);
-        System.out.println("Data da Vendsa: "+ data);
-        System.out.println("Valor: "+ valor);
-        System.out.println("Cliente: "+ nomeCliente);
-        System.out.println("Vendedor: "+ nomeVendedor);
-        System.out.println("Quantidade: "+ quantidades);
-        System.out.println("Total: "+ total);
-
     }
 
     @Override
@@ -80,7 +60,6 @@ public class Venda {
     public String getData() {
         return data;
     }
-
     public void setData(String data) {
         this.data = data;
     }

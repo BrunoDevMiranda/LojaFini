@@ -1,11 +1,5 @@
 package br.com.lojafini.data.model;
 
-
-import org.w3c.dom.ls.LSOutput;
-
-import java.text.SimpleDateFormat;
-
-
 public abstract class Pessoa {
 
     private Integer ID; //index
@@ -13,11 +7,6 @@ public abstract class Pessoa {
     private String cpf;
     private String endereco;
     private String nascimento;
-
-    public Pessoa() {
-
-    }
-
     public Pessoa(Integer Id, String nome, String cpf, String endereco, String nascimento) {
         this.ID = Id;
         this.nome = nome;
@@ -77,18 +66,10 @@ public abstract class Pessoa {
         this.nascimento = nascimento;
     }
 
-    public void print(){
-        System.out.println("Nome: "+ nome);
-        System.out.println("CPF: "+ cpf);
-        System.out.println("Endereço: "+ endereco);
-        System.out.println("Data Nascimento: "+ nascimento);
-
-
-
+    public void print() {
+        System.out.println("Nome: " + nome);
+        System.out.println("CPF: " + cpf);
+        System.out.println("Endereço: " + endereco);
+        System.out.println("Data Nascimento: " + nascimento);
     }
-
-
-
-
-
 }

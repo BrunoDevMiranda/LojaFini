@@ -5,7 +5,6 @@ public class EntrarSistema {
     private static String usuario = "bruno";
     private static String senha = "1234";
 
-
     public String getUsuario() {
         return usuario;
     }

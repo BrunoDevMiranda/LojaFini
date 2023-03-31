@@ -1,15 +1,12 @@
 package br.com.lojafini.data.model;
 
-import java.util.PrimitiveIterator;
+
 
 public class Inventario {
-     private Integer ID;
-     private String nome;
-     private int qntEstoqueInicial;
-     private int qntEstoqueAtual;
-
-    public Inventario() {
-    }
+    private Integer ID;
+    private String nome;
+    private int qntEstoqueInicial;
+    private int qntEstoqueAtual;
 
     public Inventario(Integer ID, String nome, int qntEstoqueInicial) {
         this.ID = ID;
@@ -25,22 +22,6 @@ public class Inventario {
                 ", nome: '" + nome + '\'' +
                 ", qntEstoqueInicial: " + qntEstoqueInicial +
                 '}';
-    }
-
-    public Integer getID() {
-        return ID;
-    }
-
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public int getQntEstoqueInicial() {

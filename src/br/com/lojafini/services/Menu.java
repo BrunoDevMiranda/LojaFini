@@ -20,20 +20,14 @@ public class Menu {
     public static final String QUANTIDADE_DE_CORANTE_ATUAL = "Quantidade de Corante Atual:";
     public static final String QUANTIDADE_DE_AÇUCA_ATUAL = "Quantidade de Açuca Atual:";
 
-
     Ingrediente ingrediente1 = new Ingrediente("Goma", 100);
     Ingrediente ingrediente2 = new Ingrediente("Corante azul", 80);
     Ingrediente ingrediente3 = new Ingrediente("Açuca Crystal", 50);
-
     ArrayList<Inventario> inventarios = new ArrayList<>();
-
     ArrayList<Cliente> clienteList = new ArrayList<>();
     ArrayList<Vendedor> vendedorsList = new ArrayList<>();
-    ArrayList<Produto> produtoList = new ArrayList<>() {
-    };
+    ArrayList<Produto> produtoList = new ArrayList<>();
     ArrayList<Venda> vendaList = new ArrayList<>();
-
-
     public Menu() {
         this.documentoPDF = new Document();
         try {
@@ -48,7 +42,6 @@ public class Menu {
 
     public void menu() throws DocumentException {
         Scanner scanner = new Scanner(in);
-        EntrarSistema user = new EntrarSistema();
         int escolha;
         do {
             out.println("|---ESCOLHA A OPÇÃO DESEJADA---| ");
@@ -153,7 +146,7 @@ public class Menu {
 
 
                                 }
-                                if (((tubeCriado + inventarios.get(0).getQntEstoqueInicial() >= qntTubes))) {
+                                if ((tubeCriado + inventarios.get(0).getQntEstoqueInicial() >= qntTubes)) {
 
                                     Venda venda1 = new Venda(1, 1598, "21/03/2023", produtoList.get(0).getPreco(), clienteList.get(0).getNome(), vendedorsList.get(0).getNome(), produtoList.get(0).getNome(),
                                             qntTubes, (qntTubes * produtoList.get(0).getPreco()));
@@ -287,7 +280,6 @@ public class Menu {
         this.documentoPDF.add(paragraphClient1);
         this.documentoPDF.add(paragraphClient2);
 
-
         Paragraph paragraphVendedor1 = new Paragraph();
         Paragraph paragraphVendedor2 = new Paragraph();
         paragraphVendedor1.setAlignment(Element.ALIGN_CENTER);
@@ -304,13 +296,9 @@ public class Menu {
         this.documentoPDF.add(paragraphSessao);
         this.documentoPDF.add(new Paragraph(" "));
 
-
         double ard1 = Math.round(vendaList.get(0).getTotal() * 100) / 100;
         double ard2 = Math.round(vendaList.get(1).getTotal() * 100) / 100;
-
-
         double subtotal = ard1 + ard2;
-
 
         Paragraph paragraphCorpo = new Paragraph();
         Paragraph paragraphCorpoitens1 = new Paragraph();
@@ -338,7 +326,6 @@ public class Menu {
         this.documentoPDF.add(new Paragraph(" "));
         this.documentoPDF.add(new Paragraph(" "));
 
-
         paragraphCorpoitensTotal.add("Sub total:  ..................................................................................: R$ " + subtotal);
         this.documentoPDF.add(paragraphCorpoitensTotal);
         Paragraph paragraphSessao4 = new Paragraph("________________________________________________________________________");
@@ -358,7 +345,6 @@ public class Menu {
         this.documentoPDF.add(new Paragraph(" "));
         this.documentoPDF.add(new Paragraph(" "));
 
-
         Paragraph paragraphSessao5 = new Paragraph("________________________________");
         paragraphSessao5.setAlignment((Element.ALIGN_CENTER));
         this.documentoPDF.add(paragraphSessao4);
@@ -367,8 +353,6 @@ public class Menu {
         paragraphSign.setAlignment((Element.ALIGN_CENTER));
         paragraphSign.add(new Chunk("Assinatura"));
         this.documentoPDF.add(paragraphSign);
-
-
     }
 
     public void imprimir() {
