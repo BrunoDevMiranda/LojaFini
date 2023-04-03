@@ -1,13 +1,17 @@
 
 <
 LojaFini.iml,b\a\baf13cf0971f7fd28b9788b62a6727427136367b
-f
-6src/br/com/lojafini/factory/connection/ClienteDao.java,6\a\6a942c8d6ce523a61af5af437e615f95892df180
-b
-2src/br/com/lojafini/factory/ConnectionFactory.java,4\f\4fecbcd6cb1e2dfb2831dc8df82997cf9db1e484
+_
+/src/br/com/lojafini/services/EntrarSistema.java,a\f\af18b2b257c1e8275bc06b31cafe88d8691360f9
+_
+/src/br/com/lojafini/data/model/Ingrediente.java,2\d\2dda9935849a1a91805f5b9309904c3eb3208436
+^
+.src/br/com/lojafini/data/model/Inventario.java,f\6\f64c2ef251bf055f2a1fe04edec8a85ab116790f
+Z
+*src/br/com/lojafini/data/model/Pessoa.java,c\a\ca32c8eff00172c3fbf8d2941949ffc2aff12966
+[
++src/br/com/lojafini/data/model/Produto.java,7\2\723303e3e7f56736b764f2cf2cdd607ae1e11e22
+W
+'src/br/com/lojafini/services/Venda.java,9\c\9c9b0fbccb889b67425714a9c777698371782216
 \
-,src/br/com/lojafini/factory/DbException.java,e\7\e78fdafef851aea00b03486aa8684df60e6bd6fa
-]
--src/br/com/lojafini/application/MainTest.java,6\c\6c66a5a2ad44f257a0aaf15fa24612dbec0862c5
-\
-,src/br/com/lojafini/application/PdfMain.java,c\8\c8c3528a4f54b745e4981619183f860ebe1459ce
+,src/br/com/lojafini/data/model/Vendedor.java,e\f\ef6daa0a59f3e77426a5d3acb876643c4a556d39

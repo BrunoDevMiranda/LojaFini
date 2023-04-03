@@ -1,12 +1,11 @@
 package br.com.lojafini.services;
 
 import br.com.lojafini.data.model.*;
-import br.com.lojafini.util.PdfText;
+import br.com.lojafini.util.pdf.PdfText;
 import com.lowagie.text.*;
 import com.lowagie.text.pdf.PdfWriter;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,6 +15,11 @@ import static java.lang.System.out;
 public class Menu {
     private String arquivoPDF = "document/Relatorio.pdf";
     private Document documentoPDF;
+    private String produtoTxt = "document/produto.txt";
+    private String clienteTxt = "document/cliente.txt";
+    private String vendedorTxt = "document/vendedor.txt";
+    private String inventarioTxt = "document/inventario.txt";
+
     public static final String QUANTIDADE_DE_GOMA_ATUAL = "Quantidade de Goma Atual:";
     public static final String QUANTIDADE_DE_CORANTE_ATUAL = "Quantidade de Corante Atual:";
     public static final String QUANTIDADE_DE_AÇUCA_ATUAL = "Quantidade de Açuca Atual:";
@@ -28,6 +32,7 @@ public class Menu {
     ArrayList<Vendedor> vendedorsList = new ArrayList<>();
     ArrayList<Produto> produtoList = new ArrayList<>();
     ArrayList<Venda> vendaList = new ArrayList<>();
+
     public Menu() {
         this.documentoPDF = new Document();
         try {
@@ -41,6 +46,7 @@ public class Menu {
     }
 
     public void menu() throws DocumentException {
+        readText();
         Scanner scanner = new Scanner(in);
         int escolha;
         do {
@@ -55,8 +61,6 @@ public class Menu {
             escolha = scanner.nextInt();
             switch (escolha) {
                 case 1 -> {
-                    clienteList.add(new Cliente(1, "Bruno", "123.359.963-55", "Bonsucesso", "26/07/1987"));
-                    clienteList.add(new Cliente(2, "João", "123.359.963-55", "Bonsucesso", "11/05/2011"));
                     out.println("------|-CLIENTE-|-------");
                     for (int i = 0; i < clienteList.size(); i++) {
                         out.println(clienteList.get(i).toString());
@@ -65,33 +69,17 @@ public class Menu {
                 }
                 case 2 -> {
                     out.println("-------------------------------------VENDEDOR---------------------------------------------------------------");
-                    vendedorsList.add(new Vendedor(1, "Gustavo", "888.666.777-11", "Jd Primavera", "05/02/2018"));
                     for (int i = 0; i < vendedorsList.size(); i++) {
                         out.println(vendedorsList.get(i).toString());
                     }
                 }
                 case 3 -> {
                     out.println("--------------------------------------------PRODUTO---------------------------------------------------------");
-                    produtoList.add(new Produto(1, "Dentadura Vovó", 4.60));
-                    produtoList.add(new Produto(2, "Tubes Fini", 8.15));
-
                     for (int i = 0; i < produtoList.size(); i++) {
                         out.println(produtoList.get(i).toString());
                     }
                 }
                 case 4 -> {
-                    inventarios.add(new Inventario(1, "TubeFini", 30));
-                    inventarios.add(new Inventario(2, "Dentadura vovó", 30));
-
-                    produtoList.add(new Produto(1, "Dentadura Vovó", 4.60));
-                    produtoList.add(new Produto(2, "Tubes Fini", 8.15));
-
-                    vendedorsList.add(new Vendedor(1, "Gustavo", "888.666.777-11", "Jd Primavera", "05/02/2018"));
-
-                    clienteList.add(new Cliente(1, "Bruno", "123.359.963-55", "Bonsucesso", "26/07/1987"));
-                    clienteList.add(new Cliente(2, "João", "123.359.963-55", "Bonsucesso", "11/05/2011"));
-
-
                     for (int i = 0; i < inventarios.size(); i++) {
                         out.println("Quantidade em Estoque: " + inventarios.get(i).toString());
                     }
@@ -228,7 +216,7 @@ public class Menu {
                     out.println("Quantidade: " + vendaList.get(0).getQuantidades() + "..............................R$ " + ard1);
                     out.println("Produto 2: " + vendaList.get(1).getNomeProduto() + ".........................R$ " + vendaList.get(1).getValor());
                     out.println("Quantidade: " + vendaList.get(1).getQuantidades() + "..............................R$ " + ard2);
-                    double subTotal = vendaList.get(0).getTotal() + vendaList.get(1).getTotal();
+                    double subTotal = ard1 + ard2;
                     out.println("-");
                     out.println("SubTotal: .................................R$ " + subTotal);
                     out.println("----------------------------------Estoque de Material Atualizado--------------------------------------------");
@@ -361,5 +349,92 @@ public class Menu {
 
         }
     }
+
+    public void readText() {
+        try (BufferedReader br = new BufferedReader(new FileReader(produtoTxt))) {
+                String line = br.readLine();
+                line = br.readLine();
+                while (line != null) {
+                    String[] v = line.split(",");
+                    Integer ID = Integer.parseInt(v[0]);
+                    String nome = v[1];
+                    Double preco = Double.parseDouble(v[2]);
+
+                    Produto produto = new Produto(ID, nome, preco);
+                    produtoList.add(produto);
+                    line = br.readLine();
+                }
+
+            } catch (IOException e) {
+                System.out.println("Error" + e.getMessage());
+            }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(clienteTxt))) {
+            String line = br.readLine();
+            line = br.readLine();
+            while (line != null) {
+                String[] v = line.split(",");
+                Integer ID = Integer.parseInt(v[0]);
+                String nome = v[1];
+                String cpf = v[2];
+                String endereco = v[3];
+                String nascimento = v[4];
+
+
+                Cliente cliente = new Cliente(ID, nome, cpf, endereco, nascimento);
+                clienteList.add(cliente);
+                line = br.readLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error" + e.getMessage());
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(vendedorTxt))) {
+            String line = br.readLine();
+            line = br.readLine();
+            while (line != null) {
+                String[] v = line.split(",");
+                Integer ID = Integer.parseInt(v[0]);
+                String nome = v[1];
+                String cpf = v[2];
+                String endereco = v[3];
+                String nascimento = v[4];
+
+
+                Vendedor vendedor = new Vendedor(ID, nome, cpf, endereco, nascimento);
+                vendedorsList.add(vendedor);
+                line = br.readLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error" + e.getMessage());
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(inventarioTxt))) {
+            String line = br.readLine();
+            line = br.readLine();
+            while (line != null) {
+                String[] v = line.split(",");
+                Integer ID = Integer.parseInt(v[0]);
+                String nome = v[1];
+                Integer quantidadeInicial = Integer.parseInt(v[2]);
+
+
+                Inventario inventario = new Inventario(ID,nome,quantidadeInicial);
+                inventarios.add(inventario);
+
+                line = br.readLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error" + e.getMessage());
+        }
+
+    }
+
+
+
+
 }
 

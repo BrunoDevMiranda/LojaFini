@@ -1,4 +1,4 @@
-package br.com.lojafini.util;
+package br.com.lojafini.util.pdf;
 
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
