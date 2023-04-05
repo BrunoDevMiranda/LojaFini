@@ -233,13 +233,13 @@ public class Menu {
                     out.println("| Data da Compra: " + vendaList.get(0).getData()+"                |");
                     out.println("| Nome do Cliente: " + vendaList.get(0).getNomeCliente()+"                    |");
                     out.println("| Nome do Vendedor: " + vendaList.get(0).getNomeVendedor()+"                |");
-                    out.println("| Produto 1: " + vendaList.get(0).getNomeProduto() + "               R$ " + vendaList.get(0).getValor()+" |");
+                    out.println("| Produto 1: " + vendaList.get(0).getNomeProduto() + "           R$ " + vendaList.get(0).getValor()+" |");
                     out.println("| Quantidade: " + vendaList.get(0).getQuantidades() + "                   R$ " + ard1+" |");
-                    out.println("| Produto 2: " + vendaList.get(1).getNomeProduto() + "                  R$ " + vendaList.get(1).getValor()+" |");
+                    out.println("| Produto 2: " + vendaList.get(1).getNomeProduto() + "              R$ " + vendaList.get(1).getValor()+" |");
                     out.println("| Quantidade: " + vendaList.get(1).getQuantidades() + "                   R$ " + ard2+" |");
                     double subTotal = ard1 + ard2;
                     out.println("|-------------------------------------------|");
-                    out.println("| SubTotal: .....................  R$ " + subTotal+" |");
+                    out.println("| SubTotal: ............................  R$ " + subTotal+" |");
 
                     if ((ingrediente1.getPesoLiquidoAtual() < 100) && ((ingrediente2.getPesoLiquidoAtual() < 100) && (ingrediente3.getPesoLiquidoAtual() < 100)))
                     {

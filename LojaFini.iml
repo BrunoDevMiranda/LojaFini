@@ -7,8 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="ch.codeblock.qrinvoice.openpdf" level="application" />
-    <orderEntry type="library" name="googlecode.jdbc.proc.daofactory" level="application" />
-    <orderEntry type="library" name="mysql.connector.j" level="application" />
+    <orderEntry type="library" exported="" name="ch.codeblock.qrinvoice.openpdf" level="application" />
+    <orderEntry type="library" exported="" name="googlecode.jdbc.proc.daofactory" level="application" />
+    <orderEntry type="library" exported="" name="mysql.connector.j" level="application" />
   </component>
 </module>
