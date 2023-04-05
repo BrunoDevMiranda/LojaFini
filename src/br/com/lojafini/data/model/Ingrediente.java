@@ -10,6 +10,7 @@ public class Ingrediente {
         this.pesoLiquidoInicial = pesoLiquidoInicial;
         this.pesoLiquidoAtual = pesoLiquidoInicial;
     }
+
     public float getPesoLiquidoAtual() {
         return pesoLiquidoAtual;
     }
@@ -18,3 +19,4 @@ public class Ingrediente {
         this.pesoLiquidoAtual = pesoLiquidoAtual;
     }
 }
+

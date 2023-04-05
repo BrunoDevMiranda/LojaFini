@@ -4,12 +4,13 @@ import br.com.lojafini.services.EntrarSistema;
 import br.com.lojafini.services.Menu;
 import com.lowagie.text.DocumentException;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.System.*;
 
 public class Main {
-    public static void main(String[] args) throws DocumentException {
+    public static void main(String[] args) throws DocumentException, IOException, InterruptedException {
         Scanner scanner = new Scanner(in);
         EntrarSistema user = new EntrarSistema();
         Menu menu = new Menu();
@@ -22,8 +23,6 @@ public class Main {
             out.println("Tentativa: " + (4 - tentativas) + " :");
 
             if (userName.equals(user.getUsuario()) && senha.equals(user.getSenha())) {
-                out.println("||-BEM VINDO AO SISTEMA-||");
-                out.println("||-NAVEGAÇÃO DO MENU-||");
                 menu.menu();
                 return;
             } else {

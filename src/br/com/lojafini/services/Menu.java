@@ -25,8 +25,8 @@ public class Menu {
     public static final String QUANTIDADE_DE_AÇUCA_ATUAL = "Quantidade de Açuca Atual:";
 
     Ingrediente ingrediente1 = new Ingrediente("Goma", 100);
-    Ingrediente ingrediente2 = new Ingrediente("Corante azul", 80);
-    Ingrediente ingrediente3 = new Ingrediente("Açuca Crystal", 50);
+    Ingrediente ingrediente2 = new Ingrediente("Corante azul", 100);
+    Ingrediente ingrediente3 = new Ingrediente("Açuca Crystal", 100);
     ArrayList<Inventario> inventarios = new ArrayList<>();
     ArrayList<Cliente> clienteList = new ArrayList<>();
     ArrayList<Vendedor> vendedorsList = new ArrayList<>();
@@ -45,19 +45,23 @@ public class Menu {
         }
     }
 
-    public void menu() throws DocumentException {
+    public void menu() throws DocumentException, IOException, InterruptedException {
         readText();
         Scanner scanner = new Scanner(in);
         int escolha;
         do {
-            out.println("|---ESCOLHA A OPÇÃO DESEJADA---| ");
-            out.println("- - - - - - - - - - -");
-            out.println("[1]-|-CLIENTES CADASTRADOS-| ");
-            out.println("[2]-|-VENDEDORES CADASTRADOS-| ");
-            out.println("[3]-|-PRODUTOS-| ");
-            out.println("[4]-|-VENDA-| ");
-            out.println("[5]-|-IMPRIMIR-| ");
-            out.println("[0]-|-SAIR-| ");
+            System.out.print("|-----------------------------|\n");
+            System.out.print("| BEM VINDO AO SISTEMA        |\n");
+            System.out.print("| NAVEGAÇÃO DO MENU           |\n");
+            System.out.print("|-----------------------------|\n");
+            System.out.print("| Opção 1 - CLIENTES          |\n");
+            System.out.print("| Opção 2 - VENDEDORES        |\n");
+            System.out.print("| Opção 3 - PRODUTOS          |\n");
+            System.out.print("| Opção 4 - VENDAS            |\n");
+            System.out.print("| Opção 5 - IMPRIMIR          |\n");
+            System.out.print("| Opção 0 - SAIR              |\n");
+            System.out.print("|-----------------------------|\n");
+
             escolha = scanner.nextInt();
             switch (escolha) {
                 case 1 -> {
@@ -123,17 +127,23 @@ public class Menu {
                                 out.println("----------------------------------Tubo Criado--------------------------------------------");
                                 while (inventarios.get(0).getQntEstoqueInicial() + tubeCriado < qntTubes) {
 
-                                    out.println("Tube criado :" + tubeCriado);
-
-
                                     ingrediente1.setPesoLiquidoAtual(ingrediente1.getPesoLiquidoAtual() - (quantUsada1));
                                     ingrediente2.setPesoLiquidoAtual(ingrediente2.getPesoLiquidoAtual() - (quantUsada2));
                                     ingrediente3.setPesoLiquidoAtual(ingrediente3.getPesoLiquidoAtual() - (quantUsada3));
-
                                     tubeCriado++;
-
-
                                 }
+
+                                out.println("Quantidade de Material usado foi :");
+                                out.println("GOMA :" + quantUsada1 * tubeCriado);
+                                out.println("CORANTE :" + quantUsada2 * tubeCriado);
+                                out.println("AÇUCA :" + quantUsada3 * tubeCriado);
+
+                                out.println("Fora Criados "+ tubeCriado + " Tube Fini");
+                                out.println("-------------------------------------------------------------------------------------");
+                                out.println(QUANTIDADE_DE_GOMA_ATUAL + ingrediente1.getPesoLiquidoAtual());
+                                out.println(QUANTIDADE_DE_CORANTE_ATUAL + ingrediente2.getPesoLiquidoAtual());
+                                out.println(QUANTIDADE_DE_AÇUCA_ATUAL + ingrediente3.getPesoLiquidoAtual());
+                                out.println("-------------------------------------------------------------------------------------- ");
                                 if ((tubeCriado + inventarios.get(0).getQntEstoqueInicial() >= qntTubes)) {
 
                                     Venda venda1 = new Venda(1, 1598, "21/03/2023", produtoList.get(0).getPreco(), clienteList.get(0).getNome(), vendedorsList.get(0).getNome(), produtoList.get(0).getNome(),
@@ -186,14 +196,24 @@ public class Menu {
                             out.println("----------------------------------Dentadura Criada--------------------------------------------");
                             while (inventarios.get(1).getQntEstoqueInicial() + dentCriado < qntDentadura) {
 
-                                out.println("Dentadura criada :" + dentCriado);
-
                                 ingrediente1.setPesoLiquidoAtual(ingrediente1.getPesoLiquidoAtual() - (quantUsada1));
                                 ingrediente2.setPesoLiquidoAtual(ingrediente2.getPesoLiquidoAtual() - (quantUsada2));
                                 ingrediente3.setPesoLiquidoAtual(ingrediente3.getPesoLiquidoAtual() - (quantUsada3));
                                 dentCriado++;
                             }
-                        }
+
+                            out.println("Quantidade de Material usado foi :");
+                            out.println("GOMA :" + quantUsada1 * dentCriado);
+                            out.println("CORANTE :" + quantUsada2 * dentCriado);
+                            out.println("AÇUCA :" + quantUsada3 * dentCriado);
+                      }
+
+                        out.println("Fora Criados "+ dentCriado + " Dentaduras Vovó");
+                        out.println("-------------------------------------------------------------------------------------");
+                        out.println(QUANTIDADE_DE_GOMA_ATUAL + ingrediente1.getPesoLiquidoAtual());
+                        out.println(QUANTIDADE_DE_CORANTE_ATUAL + ingrediente2.getPesoLiquidoAtual());
+                        out.println(QUANTIDADE_DE_AÇUCA_ATUAL + ingrediente3.getPesoLiquidoAtual());
+                        out.println("-------------------------------------------------------------------------------------- ");
                         if ((((dentCriado + inventarios.get(1).getQntEstoqueInicial()) >= qntDentadura))) {
 
                             Venda venda2 = new Venda(2, 1598, "21/03/2023", produtoList.get(1).getPreco(), clienteList.get(0).getNome(), vendedorsList.get(0).getNome(), produtoList.get(1).getNome(),
@@ -207,22 +227,29 @@ public class Menu {
                     double ard1 = Math.round(vendaList.get(0).getTotal() * 100) / 100;
                     double ard2 = Math.round(vendaList.get(1).getTotal() * 100) / 100;
 
-                    out.println("-----------DETALHES DA COMPRA------------------");
-                    out.println("Nota Fiscal: " + vendaList.get(0).getNotaFiscal());
-                    out.println("Data da Compra: " + vendaList.get(0).getData());
-                    out.println("Nome do Cliente: " + vendaList.get(0).getNomeCliente());
-                    out.println("Nome do Vendedor: " + vendaList.get(0).getNomeVendedor());
-                    out.println("Produto 1: " + vendaList.get(0).getNomeProduto() + "....................R$ " + vendaList.get(0).getValor());
-                    out.println("Quantidade: " + vendaList.get(0).getQuantidades() + "..............................R$ " + ard1);
-                    out.println("Produto 2: " + vendaList.get(1).getNomeProduto() + ".........................R$ " + vendaList.get(1).getValor());
-                    out.println("Quantidade: " + vendaList.get(1).getQuantidades() + "..............................R$ " + ard2);
+                    out.println("|-----------DETALHES DA COMPRA--------------|");
+                    out.println("|-------------------------------------------|");
+                    out.println("| Nota Fiscal: " + vendaList.get(0).getNotaFiscal()+"                         |");
+                    out.println("| Data da Compra: " + vendaList.get(0).getData()+"                |");
+                    out.println("| Nome do Cliente: " + vendaList.get(0).getNomeCliente()+"                    |");
+                    out.println("| Nome do Vendedor: " + vendaList.get(0).getNomeVendedor()+"                |");
+                    out.println("| Produto 1: " + vendaList.get(0).getNomeProduto() + "               R$ " + vendaList.get(0).getValor()+" |");
+                    out.println("| Quantidade: " + vendaList.get(0).getQuantidades() + "                   R$ " + ard1+" |");
+                    out.println("| Produto 2: " + vendaList.get(1).getNomeProduto() + "                  R$ " + vendaList.get(1).getValor()+" |");
+                    out.println("| Quantidade: " + vendaList.get(1).getQuantidades() + "                   R$ " + ard2+" |");
                     double subTotal = ard1 + ard2;
-                    out.println("-");
-                    out.println("SubTotal: .................................R$ " + subTotal);
-                    out.println("----------------------------------Estoque de Material Atualizado--------------------------------------------");
-                    out.println(QUANTIDADE_DE_GOMA_ATUAL + ingrediente1.getPesoLiquidoAtual());
-                    out.println(QUANTIDADE_DE_CORANTE_ATUAL + ingrediente2.getPesoLiquidoAtual());
-                    out.println(QUANTIDADE_DE_AÇUCA_ATUAL + ingrediente3.getPesoLiquidoAtual());
+                    out.println("|-------------------------------------------|");
+                    out.println("| SubTotal: .....................  R$ " + subTotal+" |");
+
+                    if ((ingrediente1.getPesoLiquidoAtual() < 100) && ((ingrediente2.getPesoLiquidoAtual() < 100) && (ingrediente3.getPesoLiquidoAtual() < 100)))
+                    {
+                        out.println("----------------------------------Estoque de Material Atualizado--------------------------------------------");
+
+                        out.println(QUANTIDADE_DE_GOMA_ATUAL + ingrediente1.getPesoLiquidoAtual());
+                        out.println(QUANTIDADE_DE_CORANTE_ATUAL + ingrediente2.getPesoLiquidoAtual());
+                        out.println(QUANTIDADE_DE_AÇUCA_ATUAL + ingrediente3.getPesoLiquidoAtual());
+                    }
+
                 }
                 case 5 -> {
                     new PdfText("Nota Fiscasl de venda");
@@ -230,6 +257,7 @@ public class Menu {
                     imprimir();
                 }
             }
+
         } while (escolha != 0);
     }
 
@@ -312,7 +340,7 @@ public class Menu {
         this.documentoPDF.add(paragraphCorpoitens22);
         this.documentoPDF.add(new Paragraph(" "));
         this.documentoPDF.add(new Paragraph(" "));
-        this.documentoPDF.add(new Paragraph(" "));
+
 
         paragraphCorpoitensTotal.add("Sub total:  ..................................................................................: R$ " + subtotal);
         this.documentoPDF.add(paragraphCorpoitensTotal);
@@ -330,8 +358,7 @@ public class Menu {
         this.documentoPDF.add(new Paragraph(" "));
         this.documentoPDF.add(new Paragraph(" "));
         this.documentoPDF.add(new Paragraph(" "));
-        this.documentoPDF.add(new Paragraph(" "));
-        this.documentoPDF.add(new Paragraph(" "));
+
 
         Paragraph paragraphSessao5 = new Paragraph("________________________________");
         paragraphSessao5.setAlignment((Element.ALIGN_CENTER));
