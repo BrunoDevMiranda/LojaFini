@@ -7,6 +7,10 @@ public abstract class Pessoa {
     private String cpf;
     private String endereco;
     private String nascimento;
+
+    public Pessoa() {
+    }
+
     public Pessoa(Integer Id, String nome, String cpf, String endereco, String nascimento) {
         this.ID = Id;
         this.nome = nome;

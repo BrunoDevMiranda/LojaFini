@@ -5,9 +5,9 @@ import java.sql.*;
 public class ConnectionFactory {
 
     private static String driver = "com.mysql.cj.jdbc.Driver";
-    private static String url = "jdbc:mysql://localhost/tibiamotos?useTimeZone=true&serverTimezone=UTC";
+    private static String url = "jdbc:mysql://localhost/lojafini?useTimeZone=true&serverTimezone=UTC";
     private static String user = "root";
-    private static String password = "root";
+    private static String password = "643499br";
 
     public static Connection getConnection() throws DbException {
         Connection conn = null;
