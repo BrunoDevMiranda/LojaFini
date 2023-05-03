@@ -60,7 +60,7 @@ public class Menu {
             System.out.print("| Opção 4 - VENDAS            |\n");
             System.out.print("| Opção 5 - IMPRIMIR          |\n");
             System.out.print("| Opção 0 - SAIR              |\n");
-            System.out.print("|-----------------------------|\n");
+            System.out.print("|-----------------------------+|\n");
 
             escolha = scanner.nextInt();
             switch (escolha) {

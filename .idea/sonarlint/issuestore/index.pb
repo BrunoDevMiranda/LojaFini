@@ -1,6 +1,4 @@
 
-_
-/src/br/com/lojafini/services/EntrarSistema.java,a\f\af18b2b257c1e8275bc06b31cafe88d8691360f9
 ^
 .src/br/com/lojafini/data/model/Inventario.java,f\6\f64c2ef251bf055f2a1fe04edec8a85ab116790f
 [
